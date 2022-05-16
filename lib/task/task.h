@@ -7,6 +7,7 @@
 class Task{
 	std::string name;
 	float payoff;
+	bool attended;
 public:
 	std::vector<int> resources;
 	Task();
@@ -16,6 +17,8 @@ public:
 	void setPayoff(float pago);
 	float getPayoff(void);
 	bool hasResource(int);
+	void setAttended();
+	bool isAttended();
 	bool operator<(const Task&  t2);
 	friend std::ostream& operator << (std::ostream &out, const Task &t);
 };

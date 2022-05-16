@@ -33,10 +33,33 @@ void EstacionTerrena::run(){
 }
 
 void EstacionTerrena::work(){
+	
+	assignTasks();
+	cout<<"Tareas por satelite:"<<endl;
+	for (auto &s:satellites){
+		cout<<*s<<endl;
+		cout<<"Ejecutando..."<<endl;
+		s->execute();
+	}
+}
+
+void EstacionTerrena::stop(){
+	for (auto &s:satellites){
+		if(s->stop()==0){
+			cout<<"Se detuvo conexion a ";
+		} else {
+			cout<<"Fallo detencion de conexion a ";
+		}
+		cout<<s->getName()<<" at port "<<s->getPort()<<endl;
+	}
+	return;
+}
+
+void EstacionTerrena::assignTasks(void){
 	std::sort(tasks.begin(), tasks.end());
-	//satellites[0]->addTask(tasks[0]);
 	int flag;
 	for(size_t i=0;i<tasks.size(); ++i){
+		if(tasks[i]->isAttended()) continue;
 		for(size_t k=0;k<satellites.size(); k++){
 			flag=0;
 			for(auto j:tasks[i]->resources){
@@ -51,25 +74,8 @@ void EstacionTerrena::work(){
 			}
 		}
 	}
-	
-	cout<<"Tareas por satelite:"<<endl;
-	for (auto &s:satellites){
-		cout<<*s<<endl;
-		cout<<"Ejecutando..."<<endl;
-		s->execute();
-	}
-	
-	
 }
 
-void EstacionTerrena::stop(){
-	for (auto &s:satellites){
-		if(s->stop()==0){
-			cout<<"Se detuvo conexion a ";
-		} else {
-			cout<<"Fallo detencion de conexion a ";
-		}
-		cout<<s->getName()<<" at port "<<s->getPort()<<endl;
-	}
-	return;
+const std::vector<Task*> &EstacionTerrena::getTasks(){
+	return tasks;
 }

@@ -18,7 +18,7 @@ public:
 	int getPort(void);
 	int addTask(Task *tarea);
 	bool usingResource(int recurso);
-	int run(void);
+	int run(void); // emula un satelite
 	int getId(void);
 	int connect2sat(void);
 	int stop(void);

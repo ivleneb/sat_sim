@@ -16,6 +16,7 @@ public:
 	void run(void);
 	void stop(void);
 	void work(void);
-	//const& std::vector<Task *> get
+	void assignTasks(void); // ordena tasks de acuerdo a payloaf y lo assigna a los satelites.
+	const std::vector<Task *>& getTasks(void);
 };
 #endif // ESTACIONTERRENA_H

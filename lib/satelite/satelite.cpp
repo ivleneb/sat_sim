@@ -124,6 +124,9 @@ int Satelite::execute(void){
 		if((n=read(sfd, buffer, 200))>0){
 			buffer[199]='\0';
 			cout<<"Recibi '"<<buffer<<"'"<<endl;
+			if(strncmp(buffer, "SUCCESS", 7)==0){
+				t->setAttended();
+			}
 		} else {
 			cout<<"Fallo recpecion de respuesta."<<endl;
 		}

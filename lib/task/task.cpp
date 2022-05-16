@@ -3,11 +3,11 @@
 #include <algorithm>
 
 Task::Task(){
+	attended=false;
 }
 
 Task::Task(std::string nombre, float pago, std::vector<int> recursos)
-: name(nombre), payoff(pago), resources(recursos) {
-	
+: name(nombre), payoff(pago), attended(false), resources(recursos) {
 }
 
 void Task::setName(std::string nombre){
@@ -42,4 +42,12 @@ std::ostream& operator << (std::ostream &out, const Task &t){
 	}
 	out<<"], payoff="<<t.payoff;
 	return out;
+}
+
+void Task::setAttended(){
+	attended=true;
+}
+
+bool Task::isAttended(){
+	return attended;
 }

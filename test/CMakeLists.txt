@@ -25,6 +25,8 @@ target_link_libraries(${tar}
 PRIVATE
 GTest::GTest 
 task
+satelite
+estacionterrena
  )
 
 add_test(gtest_ben ${EXECUTABLE_OUTPUT_PATH}/${tar})
