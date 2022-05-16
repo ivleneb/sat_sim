@@ -3,7 +3,7 @@ Simple simulation of communicaiotn betwenn satelite and earth station
 <br>
 # Project build
 $ pip install conan <br>
-$ git clone https://github.com/ivleneb/sat_sim.git project
+$ git clone https://github.com/ivleneb/sat_sim.git project <br>
 $ cd project/build/ <br>
 $ conan install .. --build=missing <br>
 <br>
