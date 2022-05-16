@@ -9,7 +9,6 @@ class EstacionTerrena{
 	std::vector<Task *> tasks;
 	std::vector<Satelite *> satellites;
 public:
-	//EstacionTerrena();
 	EstacionTerrena(std::string nombre, std::vector<Task *> tareas, std::vector<Satelite *> satelites);
 	void addTask(Task tarea);
 	void addSatelite(Satelite satelite);

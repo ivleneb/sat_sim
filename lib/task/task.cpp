@@ -25,12 +25,15 @@ void Task::setPayoff(float pago){
 float Task::getPayoff(void){
 	return payoff;
 }
+
+// verifica si la tarea usa un recurso en especifico
 bool Task::hasResource(int r){
 	if (std::find(resources.begin(), resources.end(), r)!=resources.end())
 		return true;
 	else return false;
 }
 
+// Operator overload para el ordenamiento de acuerdo a payload
 bool Task::operator<(const Task&  t2){
 	return payoff<t2.payoff;
 }

@@ -8,12 +8,14 @@ extern "C"
 #include <string>
 #include <vector>
 
+// Verificar getName de una tarea
 TEST(test_sat, getName)
 {
 	Task t("task1");
 	EXPECT_STREQ("task1", t.getName().c_str());
 }
 
+// Verificar funcion getPort de un satelite
 TEST(test_sat, getPort)
 {
 	std::string str("sat_1");
@@ -21,6 +23,7 @@ TEST(test_sat, getPort)
 	ASSERT_EQ(6500, s.getPort());
 }
 
+// Verificar que las tareas se orden de acuerdo al payoff
 TEST(test_sat, OrderTasks)
 {
 	Task t1("fotos", 10, {1, 5});

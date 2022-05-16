@@ -8,7 +8,8 @@
 #include <cstring>
 
 using namespace std;
-//Satelite::Satelite(){}
+
+// ruta estatica a binario que ejecuta un socket server
 static char path[]="/home/ubuntu/cpp/satellogic/build/bin/satEmu";
 
 struct tsk{
@@ -42,6 +43,8 @@ bool Satelite::usingResource(int recurso){
 	return false;
 }
 
+// Abre un socket cliente que se comunicara con el proceso socket server 
+// Debe ejecutarse despues de Satelite::run()
 int Satelite::connect2sat(void){
 	int sockfd;
 	struct sockaddr_in serv_addr;
@@ -69,6 +72,7 @@ int Satelite::connect2sat(void){
 	return 0;
 }
 
+// libera socket cliente
 int Satelite::stop(){
 	if(close(sfd)!=0){ 
 		cout<<"Fail to close socket ("<<name<<")."<<endl;
@@ -79,6 +83,7 @@ int Satelite::stop(){
 	}
 }
 
+// lanza un proceso que ejeuta un socket server
 int Satelite::run(){
 	int id=-1;
 	if((id=fork())<0){
@@ -102,6 +107,7 @@ int Satelite::getId(){
 	return pid;
 }
 
+// Procesa las tareas, envia al server y espera respuesta para cada tarea
 int Satelite::execute(void){
 	for(auto& t: tasks){
 		struct tsk tarea;

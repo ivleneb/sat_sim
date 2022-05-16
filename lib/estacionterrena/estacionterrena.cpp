@@ -4,9 +4,6 @@
 
 using namespace std;
 
-/*EstacionTerrena::EstacionTerrena(){
-}*/
-
 EstacionTerrena::EstacionTerrena(std::string nombre, std::vector<Task *> tareas, std::vector<Satelite *> satelites)
 :name(nombre), tasks(tareas), satellites(satelites){
 	cout<<"Estacion terrena: "<<name<<endl;
@@ -20,6 +17,7 @@ EstacionTerrena::EstacionTerrena(std::string nombre, std::vector<Task *> tareas,
 	}
 }
 
+// lanza los clientes de cada satalite
 void EstacionTerrena::run(){
 	for (auto &s:satellites){
 		if(s->connect2sat()==0){
@@ -32,6 +30,7 @@ void EstacionTerrena::run(){
 	return;
 }
 
+// asigna tareas a cada satelite y las ejecuta
 void EstacionTerrena::work(){
 	
 	assignTasks();
@@ -43,6 +42,7 @@ void EstacionTerrena::work(){
 	}
 }
 
+// Detiene el cliente de cada satelite
 void EstacionTerrena::stop(){
 	for (auto &s:satellites){
 		if(s->stop()==0){
@@ -55,6 +55,8 @@ void EstacionTerrena::stop(){
 	return;
 }
 
+// asigna tareas a cada satelite dependiendo del payload
+// y uso de recursos
 void EstacionTerrena::assignTasks(void){
 	std::sort(tasks.begin(), tasks.end());
 	int flag;
