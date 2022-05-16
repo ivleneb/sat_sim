@@ -9,7 +9,7 @@
 
 using namespace std;
 //Satelite::Satelite(){}
-static char path[]="/home/ubuntu/cpp/satellogic/lib/sateliteemulator/satEmu";
+static char path[]="/home/ubuntu/cpp/satellogic/build/bin/satEmu";
 
 struct tsk{
 	char name[50];
